@@ -17,3 +17,9 @@ This is an external hack made to help new users into memory reading/writing in R
   - Optimize the SkinChanger
   - Add Backtrack
   - Add Aimbot
+
+### Credits:
+  - Got the memory from [navewindre](https://github.com/navewindre/rust-external), modified and updated by me
+
+### Important:
+I'm not responsible for any bans that might occur on your account while using this software. Use at your own risk.
