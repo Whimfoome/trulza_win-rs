@@ -1,12 +1,12 @@
 #![allow(non_upper_case_globals)]
 #![allow(dead_code)]
 
-pub static dwLocalPlayer: u32 = 0xCF5A4C;
-pub static dwEntityList: u32 = 0x4D07DD4;
-pub static dwGlowObjectManager: u32 = 0x5248228;
-pub static dwForceAttack: u32 = 0x3139490;
-pub static dwForceJump: u32 = 0x51AB48C;
-pub static dwbSendPackets: u32 = 0xD2CFA;
+pub static dwLocalPlayer: u32 = 0xCF7A3C;
+pub static dwEntityList: u32 = 0x4D09EF4;
+pub static dwGlowObjectManager: u32 = 0x524A330;
+pub static dwForceAttack: u32 = 0x313B5B0;
+pub static dwForceJump: u32 = 0x51AD5A8;
+pub static dwbSendPackets: u32 = 0xD2E8A;
 pub static m_fFlags: u32 = 0x104;
 pub static m_iTeamNum: u32 = 0xF4;
 pub static m_bSpotted: u32 = 0x93D;
