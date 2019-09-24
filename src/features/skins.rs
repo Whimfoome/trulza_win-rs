@@ -83,40 +83,40 @@ pub fn run() {
                 
                 let mut fallbackpaint = paint_kit;
                 match weapon_id {
-                    1 => fallbackpaint = 711,
-                    2 => fallbackpaint = 396,
-                    3 => fallbackpaint = 660,
-                    4 => fallbackpaint = 38,
-                    7 => fallbackpaint = 707,
-                    8 => fallbackpaint = 845,
-                    9 => fallbackpaint = 838,
-                    10 => fallbackpaint = 626,
-                    11 => fallbackpaint = 628,
-                    13 => fallbackpaint = 494,
-                    14 => fallbackpaint = 547,
-                    16 => fallbackpaint = 309,
-                    17 => fallbackpaint = 433,
-                    19 => fallbackpaint = 283,
-                    23 => fallbackpaint = 846,
-                    24 => fallbackpaint = 704,
-                    25 => fallbackpaint = 654,
-                    26 => fallbackpaint = 676,
-                    27 => fallbackpaint = 703,
-                    28 => fallbackpaint = 514,
-                    29 => fallbackpaint = 434,
-                    30 => fallbackpaint = 614,
-                    32 => fallbackpaint = 389,
-                    33 => fallbackpaint = 481,
-                    34 => fallbackpaint = 448,
-                    35 => fallbackpaint = 3,
-                    36 => fallbackpaint = 678,
-                    38 => fallbackpaint = 312,
-                    39 => fallbackpaint = 287,
-                    40 => fallbackpaint = 253,
-                    60 => fallbackpaint = 644,
-                    61 => fallbackpaint = 504,
-                    63 => fallbackpaint = 435,
-                    64 => fallbackpaint = 522,
+                    1 => fallbackpaint = 711,   // Desert Eagle
+                    2 => fallbackpaint = 396,   // Dual Berettas
+                    3 => fallbackpaint = 660,   // Five-SeveN
+                    4 => fallbackpaint = 38,    // Glock-18
+                    7 => fallbackpaint = 707,   // AK-47
+                    8 => fallbackpaint = 845,   // AUG
+                    9 => fallbackpaint = 838,   // AWP
+                    10 => fallbackpaint = 626,  // FAMAS
+                    11 => fallbackpaint = 628,  // G3SG1
+                    13 => fallbackpaint = 494,  // Galil AR
+                    14 => fallbackpaint = 547,  // M249
+                    16 => fallbackpaint = 309,  // M4A4
+                    17 => fallbackpaint = 433,  // MAC-10
+                    19 => fallbackpaint = 283,  // P90
+                    23 => fallbackpaint = 846,  // MP5-SD
+                    24 => fallbackpaint = 704,  // UMP-45
+                    25 => fallbackpaint = 654,  // XM1014
+                    26 => fallbackpaint = 676,  // PP-Bizon
+                    27 => fallbackpaint = 703,  // MAG-7
+                    28 => fallbackpaint = 514,  // Negev
+                    29 => fallbackpaint = 434,  // Sawed-Off
+                    30 => fallbackpaint = 614,  // Tec-9
+                    32 => fallbackpaint = 389,  // P2000
+                    33 => fallbackpaint = 481,  // MP7
+                    34 => fallbackpaint = 448,  // MP9
+                    35 => fallbackpaint = 3,    // Nova
+                    36 => fallbackpaint = 678,  // P250
+                    38 => fallbackpaint = 312,  // SCAR-20
+                    39 => fallbackpaint = 287,  // SG 553
+                    40 => fallbackpaint = 253,  // SSG 08
+                    60 => fallbackpaint = 644,  // M4A1-S
+                    61 => fallbackpaint = 504,  // USP-S
+                    63 => fallbackpaint = 435,  // CZ75-Auto
+                    64 => fallbackpaint = 522,  // R8 Revolver
                     _ => {
                         if weapon_id != KnifeDefinitionIndex::WeaponKnife as short && weapon_id != KnifeDefinitionIndex::WeaponKnifeT as short && weapon_id != item_def {continue}
                         else {

@@ -1,5 +1,6 @@
-#![allow(non_upper_case_globals)]
-#![allow(dead_code)]
+#![allow(non_upper_case_globals)] // Not showing warnings on statics with Lower Case
+#![allow(dead_code)] // Not showing warning on variables that are not used
+// Get Updated Offsets from https://github.com/frk1/hazedumper
 
 pub static dwLocalPlayer: u32 = 0xCF7A3C;
 pub static dwEntityList: u32 = 0x4D09EF4;

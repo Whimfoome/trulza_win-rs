@@ -1,3 +1,5 @@
+// We use winapi protected parts of the crate for most of our functions
+
 use winapi::shared::minwindef::DWORD;
 use winapi::{ 
     um::{ 
@@ -22,11 +24,13 @@ use std::{
     ffi::CString };
 
 //////////////////////////////////////////////////
+// Yes, I use globals
 pub static mut PID: DWORD = 0;
 pub static mut BASE: DWORD = 0;
 pub static mut HAND: HANDLE = nullptr();
 
 pub fn inject(title: &str, module_name: &str) {
+    // Looping until we get everything we need
     loop {
         find_window(title);
         unsafe {
@@ -66,6 +70,7 @@ pub fn write<T: Default>(address: u32, mut value: T) {
     }
 }
 //////////////////////////////////////////////////
+// Too complicated down here, it should be similar with other languages
 
 fn find_window(title: &str) {
     let _title = CString::new(title).unwrap();

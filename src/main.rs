@@ -13,6 +13,7 @@ fn main() {
         println!("");
     }
 
+    // Spawning Threads for every feature
     std::thread::spawn(|| {
         features::bhop::run();
     });
@@ -32,6 +33,7 @@ fn main() {
         features::trigger::run();
     });
 
+    // Reading line, else the application closes
     let mut string = String::new();
     std::io::stdin().read_line(&mut string).expect("Failed to read line");
 

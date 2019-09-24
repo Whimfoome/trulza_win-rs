@@ -5,7 +5,8 @@ pub mod radar;
 pub mod skins;
 pub mod trigger;
 
-/*
+/* Example for a new feature
+
 use crate::memory as mem;
 use crate::offsets as of;
 use crate::helpers as hp;
@@ -26,4 +27,5 @@ pub fn run() {
         
     }
 }
+
 */
