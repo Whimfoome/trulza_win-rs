@@ -12,11 +12,11 @@ This is an external hack made to help new users into memory reading/writing in R
   - SkinChanger
   - TriggerBot
 
-#### To-Do:
-  - PatternScan (Get's offsets automatically)
-  - Optimize the SkinChanger
-  - Add Backtrack
-  - Add Aimbot
+### To-Do:
+  - New SkinChanger
+  - Make SDK
+  - PatternScan
+  - Backtrack
 
 ### Credits:
   - Got the memory from [navewindre](https://github.com/navewindre/rust-external), modified and updated by me
