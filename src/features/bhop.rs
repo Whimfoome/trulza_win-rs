@@ -21,14 +21,13 @@ pub fn launch(m_base: u32) {
         let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
         if lp == 0 {continue}; // If there is no LocalPlayer (not in-game) skip to next iteration
 
-        if hp::key_state(32) { // If pressed Spacebar (32)
+        while hp::key_state(32) { // If pressed Spacebar (32)
             let flags = mem::read::<u32>(lp + of::m_fFlags);
 
-            if flags == 256 { // If Not in Air
-                mem::write::<u32>(m_base + of::dwForceJump, 4);
-            }
-            else {
+            if flags == 257 || flags == 263 { // If Not in Air
                 mem::write::<u32>(m_base + of::dwForceJump, 5);
+                hp::t_sleep(20);
+                mem::write::<u32>(m_base + of::dwForceJump, 4);
             }
         }
     }
