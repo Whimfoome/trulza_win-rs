@@ -2,16 +2,21 @@ use crate::memory as mem;
 use crate::offsets as of;
 use crate::helpers as hp;
 
-pub fn run() {
-    let toggle_bhop: bool = true;
-    println!("Bhop: {}", toggle_bhop);
 
-    while toggle_bhop {
+pub fn ignite(enabled: bool, m_base: u32) {
+    if enabled {
+        println!("Bhop: {}", enabled);
 
+        std::thread::spawn(move || {
+            launch(m_base);
+        });
+    }
+}
+
+
+pub fn launch(m_base: u32) {
+    loop {
         hp::t_sleep(15); // Sleeping, so we don't eat our CPU
-
-        let m_base;
-        unsafe {m_base = mem::BASE};
 
         let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
         if lp == 0 {continue}; // If there is no LocalPlayer (not in-game) skip to next iteration

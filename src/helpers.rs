@@ -1,7 +1,6 @@
 pub fn key_state(key: i32) -> bool {
     unsafe {
         let state: i32 = winapi::um::winuser::GetAsyncKeyState(key).into();
-
         return (state &0x8000) != 0;
     }
 }

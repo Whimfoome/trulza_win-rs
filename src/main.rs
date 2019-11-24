@@ -7,31 +7,19 @@ use memory::{ PID, BASE, inject };
 fn main() {
 
     inject("Counter-Strike: Global Offensive", "client_panorama.dll");
+
     unsafe {
         println!("pId: {}", PID);
         println!("client_panorama.dll: {}", BASE);
         println!("");
-    }
 
-    // Spawning Threads for every feature
-    std::thread::spawn(|| {
-        features::bhop::run();
-    });
-    std::thread::spawn(|| {
-        features::flash::run();
-    });
-    std::thread::spawn(|| {
-        features::glow::run();
-    });
-    std::thread::spawn(|| {
-        features::radar::run();
-    });
-    std::thread::spawn(|| {
-        features::skins::run();
-    });
-    std::thread::spawn(|| {
-        features::trigger::run();
-    });
+        features::bhop::ignite(true, BASE);
+        features::flash::ignite(true, BASE);
+        features::glow::ignite(true, BASE);
+        features::radar::ignite(true, BASE);
+        features::skins::ignite(false, BASE);
+        features::trigger::ignite(true, BASE);
+    }
 
     // Reading line, else the application closes
     let mut string = String::new();

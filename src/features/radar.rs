@@ -2,16 +2,21 @@ use crate::memory as mem;
 use crate::offsets as of;
 use crate::helpers as hp;
 
-pub fn run() {
-    let toggle_radar: bool = true;
-    println!("Radar: {}", toggle_radar);
 
-    while toggle_radar {
+pub fn ignite(enabled: bool, m_base: u32) {
+    if enabled {
+        println!("Radar: {}", enabled);
 
+        std::thread::spawn(move || {
+            launch(m_base);
+        });
+    }
+}
+
+
+pub fn launch(m_base: u32) {
+    loop {
         hp::t_sleep(50); // Sleeping, so we don't eat our CPU
-
-        let m_base;
-        unsafe {m_base = mem::BASE};
 
         for i in 0..33 { // Gets every enemy, probably they are less than 32
             let entity = mem::read::<u32>(m_base + of::dwEntityList + i * 0x10);

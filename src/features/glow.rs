@@ -2,23 +2,28 @@ use crate::memory as mem;
 use crate::offsets as of;
 use crate::helpers as hp;
 
-pub fn run() {
-    let toggle_glow: bool = true;
-    let teammates: bool = false;
-    println!("Glow: {}, teammates: {}", toggle_glow, teammates);
 
-    while toggle_glow {
+pub fn ignite(enabled: bool, m_base: u32) {
+    let see_team    : bool  = false;
 
+    if enabled {
+        println!("Glow: {}, teammates: {}", enabled, see_team);
+
+        std::thread::spawn(move || {
+            launch(m_base, see_team);
+        });
+    }
+}
+
+
+pub fn launch(m_base: u32, see_team: bool) {
+    loop {
         hp::t_sleep(20); // Sleeping, so we don't eat our CPU
-
-        let m_base;
-        unsafe {m_base = mem::BASE};
 
         let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
         let glowmng = mem::read::<u32>(m_base + of::dwGlowObjectManager);
 
         if lp == 0 {continue}; // If there is no LocalPlayer (not in-game) skip to next iteration
-
         for i in 0..66 { // Gets every entity, probably they are less than 65
             let entity = mem::read::<u32>(m_base + of::dwEntityList + (i - 1) * 0x10);
             let myteam = mem::read::<u32>(lp + of::m_iTeamNum);
@@ -37,7 +42,7 @@ pub fn run() {
                     mem::write::<bool>(coloring + 0x24, true); // ON-OFF
                     mem::write::<bool>(coloring + 0x25, false); // Square
                 }
-                else if teammates { // Teammate
+                else if see_team { // Teammate
                     let coloring = glowmng + curr_glow_index * 0x38;
                     mem::write::<f32>(coloring + 0x4, 0.0); // R
                     mem::write::<f32>(coloring + 0x8, 0.0); // G

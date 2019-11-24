@@ -7,6 +7,21 @@ use winapi::ctypes::c_short as short;
 use crate::helpers as hp;
 
 
+pub fn ignite(enabled: bool, m_base: u32) {
+    let knife_id    : i32   = 4;
+    let item_def    : short = KnifeDefinitionIndex::WeaponKnifeM9Bayonet as short;
+    let paint_kit   : i32   = 413;
+
+    if enabled {
+        println!("SkinChanger: {}", enabled);
+
+        std::thread::spawn(move || {
+            launch(m_base, knife_id, item_def, paint_kit);
+        });
+    }
+}
+
+
 /*
 * offsets between viewmodel indexes located in the sv_precacheinfo list
 * these usually change after new knives are introduced to the game
@@ -34,15 +49,8 @@ enum KnifeDefinitionIndex               // id
     WeaponKnifeWidowmaker = 523         // 13
 }
 
-pub fn run() {
-    let toggle_skins: bool = false;
-    println!("SkinChanger: {} (UNOPTIMIZED)", toggle_skins);
+pub fn launch(m_base: u32, knife_id: i32, item_def: short, paint_kit: i32) {
 
-
-    let knife_id: i32 = 4;
-    let item_def: short = KnifeDefinitionIndex::WeaponKnifeM9Bayonet as short;
-    let paint_kit: i32 = 413;
-    //
     const ITEM_IDHIGH: i32 = -1;
     const ENTITYQUALITY: i32 = 3;
     const FALLBACKWEAR: f32 = 0.0001;
@@ -53,12 +61,8 @@ pub fn run() {
     let mut model_index: i32 = 0;
 
 
-    while toggle_skins {
-
+    loop {
         hp::t_sleep(5);
-
-        let m_base;
-        unsafe {m_base = mem::BASE};
 
         let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
         if lp == 0 {                        // LocalPlayer is not connected to any server

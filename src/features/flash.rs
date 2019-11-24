@@ -2,16 +2,21 @@ use crate::memory as mem;
 use crate::offsets as of;
 use crate::helpers as hp;
 
-pub fn run() {
-    let toggle_flash: bool = true;
-    println!("NoFlash: {}", toggle_flash);
 
-    while toggle_flash {
+pub fn ignite(enabled: bool, m_base: u32) {
+    if enabled {
+        println!("NoFlash: {}", enabled);
 
+        std::thread::spawn(move || {
+            launch(m_base);
+        });
+    }
+}
+
+
+pub fn launch(m_base: u32) {
+    loop {
         hp::t_sleep(50); // Sleeping, so we don't eat our CPU
-
-        let m_base;
-        unsafe {m_base = mem::BASE};
 
         let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
         let flashdur = mem::read::<u32>(lp + of::m_flFlashDuration);

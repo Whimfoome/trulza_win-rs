@@ -1,5 +1,4 @@
 // We use winapi protected parts of the crate for most of our functions
-
 use winapi::shared::minwindef::DWORD;
 use winapi::{ 
     um::{ 
@@ -24,28 +23,34 @@ use std::{
     ffi::CString };
 
 //////////////////////////////////////////////////
-// Yes, I use globals
-pub static mut PID: DWORD = 0;
-pub static mut BASE: DWORD = 0;
-pub static mut HAND: HANDLE = nullptr();
+
+pub static mut PID  : DWORD     = 0;
+pub static mut BASE : DWORD     = 0;
+pub static mut HAND : HANDLE    = nullptr();
+
 
 pub fn inject(title: &str, module_name: &str) {
-    // Looping until we get everything we need
     loop {
+
         find_window(title);
+
         unsafe {
             if PID != 0 {
-                open_process();
+                HAND = OpenProcess(0x1f0ff as DWORD, 0, PID);
+
                 if find_module(module_name) {
                     break;
                 }
             }
         }
+
     }
 }
-//////////////////////////////////////////////////
+
+
 pub fn read<T: Default>(address: u32) -> T {
     let mut ret: T = Default::default();
+
     unsafe {
         ReadProcessMemory(
             HAND, 
@@ -53,10 +58,11 @@ pub fn read<T: Default>(address: u32) -> T {
             &mut ret as *mut T as *mut c_void, 
             std::mem::size_of::<T>(), 
             nullptr()
-        );
-        return ret;
-    }
+        );}
+
+    return ret;
 }
+
 
 pub fn write<T: Default>(address: u32, mut value: T) {
     unsafe {
@@ -66,11 +72,9 @@ pub fn write<T: Default>(address: u32, mut value: T) {
             &mut value as *mut T as *const c_void, 
             std::mem::size_of::<T>(), 
             nullptr()
-        );
-    }
+        );}
 }
-//////////////////////////////////////////////////
-// Too complicated down here, it should be similar with other languages
+
 
 fn find_window(title: &str) {
     let _title = CString::new(title).unwrap();
@@ -85,11 +89,6 @@ fn find_window(title: &str) {
     }
 }
 
-fn open_process() {
-    unsafe {
-        HAND = OpenProcess(0x1f0ff as DWORD, 0, PID);
-    }
-}
 
 fn find_module(name: &str) -> bool {
     unsafe {
