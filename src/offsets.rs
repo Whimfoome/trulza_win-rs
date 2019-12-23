@@ -2,12 +2,12 @@
 #![allow(dead_code)] // Not showing warning on variables that are not used
 // Get Updated Offsets from https://github.com/frk1/hazedumper
 
-pub static dwLocalPlayer        : u32   = 0xD27AAC;
-pub static dwEntityList         : u32   = 0x4D3B6AC;
-pub static dwGlowObjectManager  : u32   = 0x527CED0;
-pub static dwForceAttack        : u32   = 0x316CD54;
-pub static dwForceJump          : u32   = 0x51DEE98;
-pub static dwbSendPackets       : u32   = 0xD32BA;
+pub static dwLocalPlayer        : u32   = 0xD28B1C;
+pub static dwEntityList         : u32   = 0x4D3C68C;
+pub static dwGlowObjectManager  : u32   = 0x527DF60;
+pub static dwForceAttack        : u32   = 0x316DD4C;
+pub static dwForceJump          : u32   = 0x51DFEAC;
+pub static dwbSendPackets       : u32   = 0xD333A;
 pub static m_fFlags             : u32   = 0x104;
 pub static m_iTeamNum           : u32   = 0xF4;
 pub static m_bSpotted           : u32   = 0x93D;
