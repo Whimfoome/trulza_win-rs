@@ -33,6 +33,49 @@ Stiletto: 522; Talon: 523
 https://tf2b.com/itemlist.php?gid=730
 */
 
+fn get_weapon_skin(weapon_index: short) -> u32 {
+    // set your desired weapon skin values here
+    let mut paint: u32 = 0;
+    match weapon_index {
+        1 => paint = 711,   // Desert Eagle
+        2 => paint = 396,   // Dual Berettas
+        3 => paint = 660,   // Five-SeveN
+        4 => paint = 38,    // Glock-18
+        7 => paint = 707,   // AK-47
+        8 => paint = 845,   // AUG
+        9 => paint = 838,   // AWP
+        10 => paint = 626,  // FAMAS
+        11 => paint = 628,  // G3SG1
+        13 => paint = 494,  // Galil AR
+        14 => paint = 547,  // M249
+        16 => paint = 309,  // M4A4
+        17 => paint = 433,  // MAC-10
+        19 => paint = 283,  // P90
+        23 => paint = 846,  // MP5-SD
+        24 => paint = 704,  // UMP-45
+        25 => paint = 654,  // XM1014
+        26 => paint = 676,  // PP-Bizon
+        27 => paint = 703,  // MAG-7
+        28 => paint = 514,  // Negev
+        29 => paint = 434,  // Sawed-Off
+        30 => paint = 614,  // Tec-9
+        32 => paint = 389,  // P2000
+        33 => paint = 481,  // MP7
+        34 => paint = 448,  // MP9
+        35 => paint = 3,    // Nova
+        36 => paint = 678,  // P250
+        38 => paint = 312,  // SCAR-20
+        39 => paint = 287,  // SG 553
+        40 => paint = 253,  // SSG 08
+        60 => paint = 644,  // M4A1-S
+        61 => paint = 504,  // USP-S
+        63 => paint = 435,  // CZ75-Auto
+        64 => paint = 522,  // R8 Revolver
+        _ => (),
+    }
+    return paint;
+}
+
 pub fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
     const ITEMIDHIGH: i32 = -1;
     const ENTITYQUALITY: i32 = 3;
@@ -101,47 +144,4 @@ pub fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
         mem::write::<u32>(active_viewmodel + of::nModelIndex, model_index);
     }
 
-}
-
-fn get_weapon_skin(weapon_index: short) -> u32 {
-    // set your desired weapon skin values here
-    let mut paint: u32 = 0;
-    match weapon_index {
-        1 => paint = 711,   // Desert Eagle
-        2 => paint = 396,   // Dual Berettas
-        3 => paint = 660,   // Five-SeveN
-        4 => paint = 38,    // Glock-18
-        7 => paint = 707,   // AK-47
-        8 => paint = 845,   // AUG
-        9 => paint = 838,   // AWP
-        10 => paint = 626,  // FAMAS
-        11 => paint = 628,  // G3SG1
-        13 => paint = 494,  // Galil AR
-        14 => paint = 547,  // M249
-        16 => paint = 309,  // M4A4
-        17 => paint = 433,  // MAC-10
-        19 => paint = 283,  // P90
-        23 => paint = 846,  // MP5-SD
-        24 => paint = 704,  // UMP-45
-        25 => paint = 654,  // XM1014
-        26 => paint = 676,  // PP-Bizon
-        27 => paint = 703,  // MAG-7
-        28 => paint = 514,  // Negev
-        29 => paint = 434,  // Sawed-Off
-        30 => paint = 614,  // Tec-9
-        32 => paint = 389,  // P2000
-        33 => paint = 481,  // MP7
-        34 => paint = 448,  // MP9
-        35 => paint = 3,    // Nova
-        36 => paint = 678,  // P250
-        38 => paint = 312,  // SCAR-20
-        39 => paint = 287,  // SG 553
-        40 => paint = 253,  // SSG 08
-        60 => paint = 644,  // M4A1-S
-        61 => paint = 504,  // USP-S
-        63 => paint = 435,  // CZ75-Auto
-        64 => paint = 522,  // R8 Revolver
-        _ => (),
-    }
-    return paint;
 }
