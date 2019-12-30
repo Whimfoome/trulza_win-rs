@@ -76,7 +76,7 @@ fn get_weapon_skin(weapon_index: short) -> u32 {
     return paint;
 }
 
-pub fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
+fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
     const ITEMIDHIGH: i32 = -1;
     const ENTITYQUALITY: i32 = 3;
     const FALLBACKWEAR: f32 = 0.0001;

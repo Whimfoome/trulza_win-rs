@@ -23,7 +23,7 @@ pub fn ignite(enabled: bool, m_base: u32) {
 }
 
 
-pub fn launch(m_base: u32) {
+fn launch(m_base: u32) {
     loop {
         hp::t_sleep(10);
 

@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 pub fn key_state(key: i32) -> bool {
     unsafe {
         let state: i32 = winapi::um::winuser::GetAsyncKeyState(key).into();
@@ -17,17 +15,4 @@ pub struct Color {
     pub g: f32,
     pub b: f32,
     pub a: f32,
-}
-
-pub struct Color255 {
-    pub r: u8,
-    pub g: u8,
-    pub b: u8,
-    pub a: u8,
-}
-
-pub struct Vector3D {
-    pub x: f32,
-    pub y: f32,
-    pub z: f32,
 }
