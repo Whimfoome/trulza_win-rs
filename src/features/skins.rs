@@ -7,8 +7,8 @@ use winapi::ctypes::c_short as short;
 
 
 pub fn ignite(enabled: bool, m_base: u32) {
-    let knife_index : u32 = 508;
-    let knife_skin  : u32 = 413;
+    let knife_index : short = 508;
+    let knife_skin  : u32   = 413;
 
     if enabled {
         println!("SkinChanger: {}", enabled);
@@ -18,20 +18,6 @@ pub fn ignite(enabled: bool, m_base: u32) {
         });
     }
 }
-
-/*
-Knives:
-CT Default: 42; T Default: 59;
-Bayonet: 500; Flip: 505;
-Gut: 506; Karambit: 507;
-M9 Bayonet: 508; Huntsman: 509;
-Flachion: 512; Bowie: 514;
-Butterfly: 515; Shadow Daggers: 516;
-Ursus: 519; Navaja: 520; 
-Stiletto: 522; Talon: 523
-
-https://tf2b.com/itemlist.php?gid=730
-*/
 
 fn get_weapon_skin(weapon_index: short) -> u32 {
     // set your desired weapon skin values here
@@ -76,7 +62,7 @@ fn get_weapon_skin(weapon_index: short) -> u32 {
     return paint;
 }
 
-fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
+fn launch(m_base: u32, knife_index: short, knife_skin: u32) {
     const ITEMIDHIGH: i32 = -1;
     const ENTITYQUALITY: i32 = 3;
     const FALLBACKWEAR: f32 = 0.0001;
@@ -99,7 +85,7 @@ fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
         }
 
         while model_index == 0 {
-            model_index = knife_index;
+            model_index = knife_index as u32;
         }
 
         // loop through m_hMyWeapons slots (8 will be enough)
@@ -113,8 +99,8 @@ fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
             let mut weapon_skin: u32 = get_weapon_skin(weapon_index);
 
             //for knives, set item and model related properties
-            if weapon_index == 42 || weapon_index == 59 || weapon_index == knife_index as short {
-                mem::write::<short>(current_weapon + of::iItemDefinitionIndex, knife_index as short);
+            if weapon_index == 42 || weapon_index == 59 || weapon_index == knife_index {
+                mem::write::<short>(current_weapon + of::iItemDefinitionIndex, knife_index);
                 mem::write::<u32>(current_weapon + of::nModelIndex, model_index);
                 mem::write::<u32>(current_weapon + of::iViewModelIndex, model_index);
                 mem::write::<i32>(current_weapon + of::iEntityQuality, ENTITYQUALITY);
@@ -134,14 +120,14 @@ fn launch(m_base: u32, knife_index: u32, knife_skin: u32) {
         if active_weapon == 0 { continue; }
 
         let weapon_index: short = mem::read::<short>(active_weapon + of::iItemDefinitionIndex);
-        if weapon_index != knife_index as short { continue; } // skip if current weapon is not already set to chosen knife
+        if weapon_index != knife_index { continue; } // skip if current weapon is not already set to chosen knife
 
         // get viewmodel entity
-        let mut active_viewmodel: u32 = mem::read::<u32>(local_player + of::hViewModel) &0xFFF;
-        active_viewmodel = mem::read::<u32>(m_base + of::dwEntityList + (active_viewmodel - 1) * 0x10);
-        if active_viewmodel == 0 { continue; }
+        let mut knife_viewmodel: u32 = mem::read::<u32>(local_player + of::hViewModel) &0xFFF;
+        knife_viewmodel = mem::read::<u32>(m_base + of::dwEntityList + (knife_viewmodel - 1) * 0x10);
+        if knife_viewmodel == 0 { continue; }
 
-        mem::write::<u32>(active_viewmodel + of::nModelIndex, model_index);
+        mem::write::<u32>(knife_viewmodel + of::nModelIndex, model_index);
     }
 
 }

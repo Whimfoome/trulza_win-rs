@@ -9,7 +9,7 @@ This is an external Windows hack made to help new users into memory reading/writ
   - NoFlash
   - Glow
   - Radar
-  - SkinChanger (Knives not working)
+  - SkinChanger (Knives not working and too performant)
   - TriggerBot
 
 ### Credits:
