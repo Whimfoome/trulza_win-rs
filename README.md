@@ -1,4 +1,4 @@
-# Trulza
+# trulza_win-rs
 This is an external Windows hack made to help new users into memory reading/writing in Rust Language. Everything should be easy to read.
 
 ### Includes:
@@ -11,6 +11,11 @@ This is an external Windows hack made to help new users into memory reading/writ
   - Radar
   - SkinChanger
   - TriggerBot
+
+### Problems:
+- Can't read Structs (for example: `mem::read::<Vector3>(localplayer + of::velocity);` won't work)
+- SkinChanger: Knives not working and FPS spikes
+- No PatternScan (you have to manually add offsets)
 
 ### Credits:
   - Got the memory from [navewindre](https://github.com/navewindre/rust-external), modified and updated by me
@@ -25,8 +30,3 @@ I'm not responsible for any bans that might occur on your account while using th
 2. Get the "nightly-i686-pc-windows-msvc" toolchain by typing `rustup default nightly-i686` in a Terminal.
 3. Clone and unzip this repository, inside it *(you should see: src, Cargo.lock, Cargo.toml)* open a Terminal and type `cargo build --release`
 4. It should compile executable located in "-/target/release"
-
-### Problems:
-- Can't read Structs (for example: `mem::read::<Vector3>(localplayer + of::velocity);` won't work)
-- SkinChanger: Knives not working and FPS spikes
-- No PatternScan (you have to manually add offsets)
