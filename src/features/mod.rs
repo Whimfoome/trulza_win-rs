@@ -2,7 +2,6 @@ pub mod bhop;
 pub mod flash;
 pub mod glow;
 pub mod radar;
-pub mod skins;
 pub mod trigger;
 
 /* Example for a new feature

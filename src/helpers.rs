@@ -16,3 +16,12 @@ pub struct Color {
     pub b: f32,
     pub a: f32,
 }
+
+pub struct Vector3 {
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+} 
+impl Default for Vector3 {
+    fn default() -> Self { Vector3{ x: 0.0, y: 0.0, z: 0.0 } } 
+}

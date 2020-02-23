@@ -17,7 +17,6 @@ fn main() {
         features::flash::ignite(true, BASE);
         features::glow::ignite(true, BASE);
         features::radar::ignite(true, BASE);
-        features::skins::ignite(false, BASE);
         features::trigger::ignite(true, BASE);
     }
 

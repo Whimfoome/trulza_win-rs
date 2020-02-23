@@ -13,13 +13,17 @@ pub fn ignite(enabled: bool, m_base: u32) {
     }
 }
 
-
 fn launch(m_base: u32) {
     loop {
         hp::t_sleep(15); // Sleeping, so we don't eat our CPU
 
         let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
         if lp == 0 {continue}; // If there is no LocalPlayer (not in-game) skip to next iteration
+        
+        // if not moving don't jump (in chat for example)
+        let p_vel: hp::Vector3 = mem::read::<hp::Vector3>(lp + of::m_vecVelocity);
+        let vel = p_vel.x + p_vel.y + p_vel.z;
+        if vel == 0.0 {continue}
 
         while hp::key_state(32) { // If pressed Spacebar (32)
             let flags = mem::read::<u32>(lp + of::m_fFlags);
