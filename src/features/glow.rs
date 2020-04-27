@@ -3,7 +3,7 @@ use crate::offsets as of;
 use crate::helpers as hp;
 
 
-pub fn ignite(enabled: bool, m_base: u32) {
+pub fn ignite(enabled: bool, m_base: &'static u32) {
     let see_team    : bool      = false;
     let color_enemy : hp::Color = hp::Color{r: 1.0, g: 0.0, b: 0.0, a: 0.7};
     let color_team  : hp::Color = hp::Color{r: 0.0, g: 0.0, b: 1.0, a: 0.7};
@@ -15,13 +15,13 @@ pub fn ignite(enabled: bool, m_base: u32) {
                 color_team.r, color_team.g, color_team.b, color_team.a);
 
         std::thread::spawn(move || {
-            launch(m_base, see_team, color_enemy, color_team);
+            launch(&m_base, see_team, color_enemy, color_team);
         });
     }
 }
 
 
-fn launch(m_base: u32, see_team: bool, color_enemy: hp::Color, color_team: hp::Color) {
+fn launch(m_base: &u32, see_team: bool, color_enemy: hp::Color, color_team: hp::Color) {
     loop {
         hp::t_sleep(20); // Sleeping, so we don't eat our CPU
 

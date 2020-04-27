@@ -9,18 +9,18 @@ fn main() {
     inject("Counter-Strike: Global Offensive", "client_panorama.dll");
 
     unsafe {
-        println!("pId: {}", PID);
-        println!("client_panorama.dll: {}", BASE);
+        println!("pId: {}", &PID);
+        println!("client_panorama.dll: {}", &BASE);
         println!("");
 
-        features::bhop::ignite(true, BASE);
-        features::flash::ignite(true, BASE);
-        features::glow::ignite(true, BASE);
-        features::radar::ignite(true, BASE);
-        features::trigger::ignite(true, BASE);
+        features::bhop::ignite(true, &BASE);
+        features::flash::ignite(true, &BASE);
+        features::glow::ignite(true, &BASE);
+        features::radar::ignite(true, &BASE);
+        features::trigger::ignite(true, &BASE);
     }
 
-    // Reading line, else the application closes
+    // Reading line or the application will close
     let mut string = String::new();
     std::io::stdin().read_line(&mut string).expect("Failed to read line");
 

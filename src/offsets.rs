@@ -1,11 +1,11 @@
 #![allow(non_upper_case_globals)] // Not showing warnings on statics with lower_case
 // Get Updated Offsets from https://github.com/frk1/hazedumper
 
-pub static dwLocalPlayer        : u32 = 0xD30B84;
-pub static dwEntityList         : u32 = 0x4D44A04;
-pub static dwGlowObjectManager  : u32 = 0x528C8B8;
-pub static dwForceAttack        : u32 = 0x3175FA8;
-pub static dwForceJump          : u32 = 0x51EE660;
+pub static dwLocalPlayer        : u32 = 0xD2FB84;
+pub static dwEntityList         : u32 = 0x4D43AB4;
+pub static dwGlowObjectManager  : u32 = 0x528B880;
+pub static dwForceAttack        : u32 = 0x3175088;
+pub static dwForceJump          : u32 = 0x51ED750;
 pub static m_fFlags             : u32 = 0x104;
 pub static m_iTeamNum           : u32 = 0xF4;
 pub static m_bSpotted           : u32 = 0x93D;

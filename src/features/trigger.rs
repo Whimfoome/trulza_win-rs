@@ -3,7 +3,7 @@ use crate::offsets as of;
 use crate::helpers as hp;
 
 
-pub fn ignite(enabled: bool, m_base: u32) {
+pub fn ignite(enabled: bool, m_base: &'static u32) {
     let keypress  : i32 = 164;
     let delay     : u64 = 10;
 
@@ -11,13 +11,13 @@ pub fn ignite(enabled: bool, m_base: u32) {
         println!("TriggerBot: {}, delay: {} ms, buttonID: {}", enabled, delay, keypress);
 
         std::thread::spawn(move || {
-            launch(m_base, keypress, delay);
+            launch(&m_base, keypress, delay);
         });
     }
 }
 
 
-fn launch(m_base: u32, keypress: i32, delay: u64) {
+fn launch(m_base: &u32, keypress: i32, delay: u64) {
     loop {
 
         hp::t_sleep(15); // Sleeping, so we don't eat our CPU

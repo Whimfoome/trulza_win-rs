@@ -3,17 +3,17 @@ use crate::offsets as of;
 use crate::helpers as hp;
 
 
-pub fn ignite(enabled: bool, m_base: u32) {
+pub fn ignite(enabled: bool, m_base: &'static u32) {
     if enabled {
         println!("Bhop: {}", enabled);
 
         std::thread::spawn(move || {
-            launch(m_base);
+            launch(&m_base);
         });
     }
 }
 
-fn launch(m_base: u32) {
+fn launch(m_base: &u32) {
     loop {
         hp::t_sleep(15); // Sleeping, so we don't eat our CPU
 

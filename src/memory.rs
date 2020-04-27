@@ -38,7 +38,7 @@ pub fn inject(title: &str, module_name: &str) {
             if PID != 0 {
                 HAND = OpenProcess(0x1f0ff as DWORD, 0, PID);
 
-                if find_module(module_name) {
+                if find_module(&module_name) {
                     break;
                 }
             }
