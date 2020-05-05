@@ -1,6 +1,7 @@
 // We use winapi protected parts of the crate for most of our functions
-use winapi::shared::minwindef::DWORD;
 use winapi::{ 
+    shared::minwindef::DWORD,
+    ctypes::c_void,
     um::{ 
         winuser::{ 
             FindWindowA, 
@@ -15,12 +16,13 @@ use winapi::{
             CreateToolhelp32Snapshot,
             Module32First,
             Module32Next } 
-    },
-    ctypes::c_void };
+    }
+};
 
 use std::{
     ptr::null_mut as nullptr,
-    ffi::CString };
+    ffi::CString 
+};
 
 //////////////////////////////////////////////////
 

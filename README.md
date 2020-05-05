@@ -20,6 +20,6 @@ I'm not responsible for any bans that might occur on your account while using th
 
 ## Installation
 1. Install [RustUp from the official site](https://www.rust-lang.org/tools/install)
-2. Get the "nightly-i686-pc-windows-msvc" toolchain by typing `rustup default nightly-i686` in a Terminal.
+2. Get the "stable-i686-pc-windows-msvc" toolchain by typing `rustup default stable-i686` in a Terminal.
 3. Clone and unzip this repository, inside it *(you should see: src, Cargo.lock, Cargo.toml)* open a Terminal and type `cargo build --release`
 4. It should compile executable located in "-/target/release"
