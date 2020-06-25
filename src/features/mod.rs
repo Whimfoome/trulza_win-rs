@@ -11,23 +11,25 @@ use crate::offsets as of;
 use crate::helpers as hp;
 
 
-pub fn ignite(enabled: bool, m_base: &'static u32) {
+pub fn ignite(enabled: bool) {
     if enabled {
         println!("Name: {}", enabled);
 
         std::thread::spawn(move || {
-            launch(&m_base);
+            launch();
         });
     }
 }
 
 
-fn launch(m_base: &u32) {
+fn launch() {
     loop {
-        hp::t_sleep(10);
+        unsafe {
+            hp::t_sleep(10);
 
-        let lp = mem::read::<u32>(m_base + of::dwLocalPlayer);
-        if lp == 0 {continue};
+            let lp = mem::read::<u32>(&mem::BASE + of::dwLocalPlayer);
+            if lp == 0 {continue};
+        }
     }
 }
 

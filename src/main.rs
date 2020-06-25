@@ -13,11 +13,11 @@ fn main() {
         println!("client_panorama.dll: {}", &BASE);
         println!("");
 
-        features::bhop::ignite(true, &BASE);
-        features::flash::ignite(true, &BASE);
-        features::glow::ignite(true, &BASE);
-        features::radar::ignite(true, &BASE);
-        features::trigger::ignite(true, &BASE);
+        features::bhop::ignite(true);
+        features::flash::ignite(true);
+        features::glow::ignite(true);
+        features::radar::ignite(true);
+        features::trigger::ignite(true);
     }
 
     // Reading line or the application will close
